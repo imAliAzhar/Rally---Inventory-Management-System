@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'ra-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
