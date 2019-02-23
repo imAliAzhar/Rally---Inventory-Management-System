@@ -1,0 +1,42 @@
+\:host 
+    position: fixed
+    padding: 0px
+    height: 100%
+    width: 144px
+
+.logo
+    margin: 48px
+    height: 48px
+    width: 48px
+
+ul 
+    list-style: none
+    padding-inline-start: 0px
+    text-align: center
+
+li 
+    margin: 32px
+    cursor: pointer
+    transition-timing-function: linear
+    color: rgba(255, 255, 255, 0.3)
+    transition: 0.3s
+
+    i 
+        display: block
+        margin: 8px
+        font-size: 32px
+
+    span    
+        visibility: hidden  
+        transition-timing-function: linear
+    
+li:focus    
+    outline: none
+
+li:hover , .active
+    margin-bottom: 40px
+    color: rgba(255, 255, 255, 1)
+
+    span 
+        visibility: visible
+

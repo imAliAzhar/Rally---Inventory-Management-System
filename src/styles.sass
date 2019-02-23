@@ -1,25 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/_colors.sass"
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @font-face
   font-family: Eczar
   src: url(../src/assets/fonts/Eczar/Eczar-Regular.ttf)
 
 @font-face 
   font-family: RobotoCondensed
-  src: url(src/assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf)
+  src: url(../src/assets/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf)
 
 @font-face 
   font-family: RobotoCondensed-Light
-  src: url(src/assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf)
+  src: url(../src/assets/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf)
 
 @font-face 
   font-family: RobotoCondensed-Bold
-  src: url(src/assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf)
+  src: url(../src/assets/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf)
 
+@import '~material-design-icons/iconfont/material-icons.css';
 
 body 
     background-color: $gray
+    color: $white
+    padding: 12px
 
 .headline-1
     font-family: RobotoCondensed-Light
@@ -73,6 +78,6 @@ body
 .overline
     font-family: RobotoCondensed
     font-size: 10px
-    text-transform: uppercas
+    text-transform: uppercase
 
 

@@ -1,4 +1,4 @@
-import { UserComponent } from './../pages/user/user.component';
+// import { UserComponent } from './../pages/user/user.component';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';

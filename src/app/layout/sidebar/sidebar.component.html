@@ -1,0 +1,11 @@
+<img class="logo" src="../../../assets/images/logo.png" />
+<ul>
+  <div *ngFor="let link of sideBarItems">
+    <li class="overline" [routerLink]="link.path" routerLinkActive="active">
+      <i class="material-icons">{{ link.icon }}</i>
+      <span class="span">
+        {{ link.title }}
+      </span>
+    </li>
+  </div>
+</ul>

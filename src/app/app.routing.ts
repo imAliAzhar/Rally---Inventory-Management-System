@@ -1,3 +1,5 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,13 +9,14 @@ import { RouterModule, Routes } from '@angular/router';
 // import { OrdersComponent } from './pages/orders/orders.component';
 // import { AuthGuard } from './core/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 // import { RegisterComponent } from './account/register/register.component';
 // import { UserComponent } from './pages/user/user.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
   // {
@@ -32,7 +35,20 @@ const routes: Routes = [
   //   component: MaterialsComponent,
   //   data: { title: "Materials" }
   // },
-  { path: 'login', component: LoginComponent, data: { title: 'Login' } }
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Dashboard' }
+      }
+    ]
+  },
+  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  { path: 'register', component: RegisterComponent, data: { title: 'Register' } }
+
   // {
   //   path: "register",
   //   component: RegisterComponent,

@@ -1,1 +1,24 @@
-<span class="headline-3">Login to Rally</span>
+<div class="topbar">
+  <img class="logo" src="../../../assets/images/logo.png" />
+  <span class="headline-3 title">Login to Rally</span>
+  <span class="signup">
+    <span class="subtitle-2 signup-text">
+      Don't have an account?
+    </span>
+
+    <button mat-stroked-button class="button" routerLink="/register">
+      Sign up
+    </button>
+  </span>
+</div>
+<div class="login-area">
+  <input type="text" autocomplete="off" class="body-2" placeholder="email" />
+  <input type="password" autocomplete="off" class="body-2" placeholder="password" />
+  <div class="confirmations">
+    <input type="checkbox" class="checkbox" />
+    <!-- <input type="checkbox" name="check" id="check" /> -->
+    <!-- <label for="check">Hello <span></span></label> -->
+    <span class="body-2">Remember me</span>
+    <button mat-flat-button class="button">Login</button>
+  </div>
+</div>
