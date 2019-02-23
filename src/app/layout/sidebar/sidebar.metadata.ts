@@ -11,12 +11,7 @@ export const ROUTES: RouteInfo[] = [
     icon: 'donut_small'
   },
   {
-    path: '/login',
-    title: 'Suppliers',
-    icon: 'people'
-  },
-  {
-    path: '/register',
+    path: '/materials',
     title: 'Materials',
     icon: 'poll'
   },
@@ -24,5 +19,10 @@ export const ROUTES: RouteInfo[] = [
     path: '/orders',
     title: 'Orders',
     icon: 'assignment_turned_in'
+  },
+  {
+    path: '/suppliers',
+    title: 'Suppliers',
+    icon: 'people'
   }
 ];

@@ -1,0 +1,27 @@
+<div class="title subtitle-1">
+  Orders
+</div>
+<div class="title-sum headline-3">
+  $12,132.43
+</div>
+<div class="list-group">
+  <div class="list-collection" *ngFor="let order of orders">
+    <div class="quantity body-1">{{ order.quantity }}</div>
+    <i class="arrow material-icons">keyboard_arrow_right</i>
+    <div class="list-item subtitle-1">
+      <div class="list-title">
+        {{ order.material }}
+      </div>
+      <div class="list-description body-2">
+        {{ order.supplier }}
+        <span class="title-date">
+          {{ order.date }}
+        </span>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+<div class="see-all button">
+  See All
+</div>
