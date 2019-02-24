@@ -1,0 +1,68 @@
+<div class="materials-table">
+  <div class="title subtitle-1">
+    Materials
+  </div>
+  <i class="add material-icons" [class.rotated]="isAddNewPanel" (click)="showAddPanel()">add</i>
+  <i class="confirm-add material-icons" [class.visible]="!isAddNewPanel" (click)="showAddPanel()"
+    >check</i
+  >
+  <div class="title-sum headline-3">
+    $12,132.43
+  </div>
+  <div class="add-new-panel" [class.panel-hidden]="!isAddNewPanel">
+    <input
+      type="text"
+      autocomplete="off"
+      class="subtitle-1"
+      placeholder="material name"
+      id="material-name"
+    />
+    <input
+      type="text"
+      autocomplete="off"
+      class="subtitle-1"
+      placeholder="material unit"
+      id="material-unit"
+    />
+    <!-- <button mat-stroke-button class="button">add</button> -->
+  </div>
+  <div class="list-group">
+    <div class="list-collection" *ngFor="let order of orders">
+      <div class="quantity body-1">{{ order.quantity }}</div>
+      <i class="arrow material-icons">edit</i>
+      <div class="list-item subtitle-1">
+        <div class="list-title">
+          {{ order.material }}
+        </div>
+        <svg class="completion-bar">
+          <path d="M 0 0 H 700" class="completeion-bar-empty" />
+          <path d="M 0 0 H 300" class="completeion-bar-processed" />
+          <path d="M 0 0 H 200" class="completeion-bar-delivered" />
+        </svg>
+        <div class="list-description body-2">
+          13 /
+          <span class="title-date">
+            23
+          </span>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+  <div class="see-all button" (click)="scrollToTop($event)">
+    go to top
+  </div>
+</div>
+
+<div class="right-sidebar">
+  <form>
+    <label for="material-name">Material</label><input class="material-name" type="text" />
+    <label for="material-unit">Unit</label><input type="text" class="material-unit" />
+    <label for="material-quantity">Total Quantity</label
+    ><input disabled class="material-quantity" type="text" />
+    <label for="material-processed">Material Processed</label
+    ><input class="material-processed" type="text" />
+    <label for="material-delivered">Material Delivered</label
+    ><input class="material-delivered" type="text" />
+  </form>
+</div>
