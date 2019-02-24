@@ -15,6 +15,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { OrdersSummaryComponent } from './dashboard/orders-summary/orders-summary.component';
+import { MaterialsComponent } from './materials/materials.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { OrdersSummaryComponent } from './dashboard/orders-summary/orders-summar
     LayoutComponent,
     DashboardComponent,
     SidebarComponent,
-    OrdersSummaryComponent
+    OrdersSummaryComponent,
+    MaterialsComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class OrdersSummaryComponent implements OnInit {
       unit: 'Rods',
       date: new Date().toDateString()
     };
-    this.orders = new Array<new>();
+    this.orders = new Array<any>();
     this.orders.push(order);
     this.orders.push(order);
     this.orders.push(order);
