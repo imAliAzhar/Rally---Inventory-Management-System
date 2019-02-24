@@ -1,5 +1,6 @@
 @import "../../assets/_colors.sass"
 
+//==========================================SIDEBAR==============================//
 .right-sidebar
     position: fixed
     top: 0px
@@ -8,64 +9,67 @@
     width: 300px
     background-color: $background
 
-form
-    position: relative  
-    float: right
-    margin-top: 10pc
-    width: 260px
+    form
+        position: relative  
+        float: right
+        margin-top: 10pc
+        width: 260px
 
-label
-    display: block
-    margin: 32px 0px 16px 0px
-    color: #ffffffaa
-    font-size: 14px
-    font-family: RobotoCondensed-Light
+    label
+        display: block
+        margin: 32px 0px 16px 0px
+        color: #ffffffaa
+        font-size: 14px
+        font-family: RobotoCondensed-Light
 
-input
-    color: #ffffffcc
-    background-color: #00000000;
-    border: none;
-    border-bottom: 1px solid #ffffff33
-    width: 100pc
-    font-size: 16px
-    font-family: RobotoCondensed
+    input
+        color: #ffffffcc
+        background-color: #00000000;
+        border: none;
+        border-bottom: 1px solid #ffffff33
+        width: 100pc
+        font-size: 16px
+        font-family: RobotoCondensed
 
-input:focus, input:hover
-    color: #ffffff
-    outline: none
+    input:focus, input:hover
+        color: #ffffff
+        outline: none
 
-input[type="range"]
-    -webkit-appearance: none
-    width: 100%
-    height: 5px
-    background: #ffffff33
-    border: none
-    outline: none
-    opacity: 0.8
-    -webkit-transition: .3s
-    transition: opacity .3s
-    cursor: pointer
-    margin: 0px
+    input[type="range"]
+        -webkit-appearance: none
+        width: 100%
+        height: 5px
+        background: #ffffff33
+        border: none
+        outline: none
+        opacity: 0.8
+        -webkit-transition: .3s
+        transition: opacity .3s
+        cursor: pointer
+        margin: 0px
 
-input[type="range"]:hover
-    opacity: 1
+    input[type="range"]:hover
+        opacity: 1
 
-input[type="range"]::-webkit-slider-thumb 
-    -webkit-appearance: none
-    appearance: none
-    width: 10px
-    height: 5px
-    background: #4CAF50
+    input[type="range"]::-webkit-slider-thumb 
+        -webkit-appearance: none
+        appearance: none
+        width: 10px
+        height: 5px
+        background: #4CAF50
 
-input[type="range"]::-ms-fill-lower 
-    background: dodgerblue
+    input[type="range"]::-ms-fill-lower 
+        background: dodgerblue
 
-input:disabled
-    cursor: not-allowed
+    input:disabled
+        cursor: not-allowed
 
-.add-material
-    float: right
-    margin: 48px 
+//==========================================SIDEBAR==============================//
+
+
+//==========================================TABLE==============================//
+
+
   
 .materials-table
     float: left 
@@ -73,150 +77,160 @@ input:disabled
     background-color: $lightgray
     margin: 16px
 
-.title 
-    padding: 16px 16px 0px 16px
+    .title 
+        padding: 16px 16px 0px 16px
 
-.title-sum
-    padding: 0px 16px 4px 16px
+    .title-sum
+        padding: 0px 16px 4px 16px
 
-.list-group
-    color: #ffffffaa
-    position: relative
-    text-align:center
-    border-top: 2px solid
-    border-image:   linear-gradient(to right, $green 25%, $darkgreen 25%, $darkgreen 60%, teal 60%, teal 75%, green 75%) 5
+    .plus-icon
+        float: right
+        position: relative
+        right: 2.9pc
+        top: 2.6pc
+        opacity: 0.7
+        cursor: pointer
+        transition: 0.3s
 
-.list-item
-    margin: 16px
-    padding: 0px 8px 0px 8px 
+    .plus-icon:hover
+        opacity: 1
 
-hr  
-    width: 57.53em
-    background-color: $gray
-    height: 1px
-    border: none
+    .rotated // used by plus-icon
+        transform: rotate(45deg)
+        color: $orange
 
-.list-description
-    display: inline
-    color: #ffffff44
-    font-size: 0.8em
+    .tick-icon
+        float: right
+        position: relative
+        left: 3.8pc
+        top: 6.4pc
+        opacity: 0.7
+        cursor: pointer
+        visibility: hidden
 
-
-.quantity
-    font-size: 1.3em
-    float: right
-    position: absolute
-    right: 48px
-    padding-top: 4px
-
-.see-all
-    text-align: center
-    margin: 8px
-    color: #ffffffaa
-    cursor: pointer
-    letter-spacing: 1px
-    transition: 0.3s
-
-.see-all:hover
-    color: #ffffff
-
-.add
-    float: right
-    position: relative
-    right: 2.9pc
-    top: 2.6pc
-    opacity: 0.7
-    cursor: pointer
-    transition: 0.3s
-
-.confirm-add
-    float: right
-    position: relative
-    left: 3.8pc
-    top: 6.4pc
-    opacity: 0.7
-    cursor: pointer
-
-.visible
-    visibility: hidden
-
-.rotated
-    transform: rotate(45deg)
-    color: $orange
-
-.add:hover
-    opacity: 1
-
-.arrow
-    font-size: 16px
-    color: #ffffff44
-    float: right
-    margin: 14px
-    visibility: hidden
-    // transition: 0.1s
-
-.list-collection
-    transition: 0.3s
-    cursor: pointer
-
-.list-collection:hover
-    color: #ffffff
-
-    .list-item
-        // border-left: 4px solid $lightgreen
-
-    .arrow
+    .visible // used by tick-icon
         visibility: visible
 
-    .list-description
-        color: #ffffff55
+    .add-new-panel
+        transition: 0.2s ease-out
+        max-height: 72px
 
-.completion-bar
-    float: right
-    position: relative  
-    height: 10px
-    width: 40pc
-    right: 6.8pc
+        form
+            display: inline
 
-.completeion-bar-empty
-    stroke: $barempty   
-    stroke-width: 10px
+        input
+            background-color: $background
+            width: 475px
+            height: 24px;
+            color: $white
+            padding: 12px
+            display: inline-block
+            border: none
+        
+        #material-name
+            border-right: 1px solid $lightgray
+        #material-unit
+            border-left: 1px solid $lightgray
 
-.completeion-bar-processed
-    stroke: $darkgreen
-    stroke-width: 10px
-
-.completeion-bar-delivered
-    stroke: $green
-    stroke-width: 10px
-
-
-.add-new-panel
-    transition: 0.2s ease-out
-    max-height: 72px
-
-    form
-        display: inline
-
-    input
-        background-color: $background
-        width: 475px
-        height: 24px;
-        color: $white
-        padding: 12px
-        display: inline-block
-        border: none
-    
-    #material-name
-        border-right: 1px solid $lightgray
-    #material-unit
-        border-left: 1px solid $lightgray
+        input:focus
+            outline: none
 
 
-    input:focus
-        outline: none
+    .panel-hidden
+        visibility: hidden
+        max-height: 0
+        overflow: hidden
 
-.panel-hidden
-    visibility: hidden
-    max-height: 0
-    overflow: hidden
+
+    .table-content
+        color: #ffffffaa
+        position: relative
+        text-align:center
+        border-top: 2px solid
+        border-image:   linear-gradient(to right, $green 25%, $darkgreen 25%, $darkgreen 60%, teal 60%, teal 75%, green 75%) 5
+
+        .list-item
+            transition: 0.3s
+            cursor: pointer
+
+            .list-content
+                margin: 16px
+                padding: 0px 8px 0px 8px 
+
+                .list-title
+                    
+
+                .completion-bar
+                    float: right
+                    position: relative  
+                    height: 10px
+                    width: 40pc
+                    right: 6.8pc
+
+                    .completeion-bar-empty
+                        stroke: $barempty   
+                        stroke-width: 10px
+
+                    .completeion-bar-processed
+                        stroke: $darkgreen
+                        stroke-width: 10px
+
+                    .completeion-bar-delivered
+                        stroke: $green
+                        stroke-width: 10px
+
+                .list-description
+                    display: inline
+                    color: #ffffff44
+                    font-size: 0.8em
+
+            hr  
+                width: 57.53em
+                background-color: $gray
+                height: 1px
+                border: none
+
+        .list-item:hover
+            color: #ffffff 
+
+            .edit-icon
+                visibility: visible
+
+            .list-description
+                color: #ffffff55
+
+        .quantity
+            font-size: 1.3em
+            float: right
+            position: absolute
+            right: 48px
+            padding-top: 4px
+
+        .edit-icon  
+            font-size: 16px
+            color: #ffffff44
+            float: right
+            margin: 14px
+            visibility: hidden
+
+
+    .see-all
+        text-align: center
+        margin: 8px
+        color: #ffffffaa
+        cursor: pointer
+        letter-spacing: 1px
+        transition: 0.3s
+
+    .see-all:hover
+        color: #ffffff
+
+
+
+
+
+
+
+
+
+

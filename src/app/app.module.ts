@@ -6,7 +6,12 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app.routing';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+
 import { MatButtonModule, MatInputModule } from '@angular/material';
+
+import { environment } from 'src/environments/environment';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -31,12 +36,14 @@ import { MaterialsComponent } from './materials/materials.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     AppRoutingModule,
     MatButtonModule,
     MatInputModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

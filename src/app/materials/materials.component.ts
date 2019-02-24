@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Material } from 'src/models/Material';
+import { DatabaseService } from '../database/database.service';
 
 @Component({
   selector: 'app-materials',
@@ -6,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./materials.component.sass']
 })
 export class MaterialsComponent implements OnInit {
+  materials$: Observable<Material[]>;
+
   orders: Array<any>;
   isAddNewPanel: boolean;
-  constructor() {
+
+  constructor(private db: DatabaseService) {
+    this.materials$ = this.db.getMaterials();
     const order = {
       material: 'Angle Iron',
       supplier: 'Rana Hamid',

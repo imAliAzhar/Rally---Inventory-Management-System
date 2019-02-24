@@ -2,8 +2,10 @@
   <div class="title subtitle-1">
     Materials
   </div>
-  <i class="add material-icons" [class.rotated]="isAddNewPanel" (click)="showAddPanel()">add</i>
-  <i class="confirm-add material-icons" [class.visible]="!isAddNewPanel" (click)="showAddPanel()"
+  <i class="plus-icon material-icons" [class.rotated]="isAddNewPanel" (click)="showAddPanel()"
+    >add</i
+  >
+  <i class="tick-icon material-icons" [class.visible]="isAddNewPanel" (click)="showAddPanel()"
     >check</i
   >
   <div class="title-sum headline-3">
@@ -24,15 +26,14 @@
       placeholder="material unit"
       id="material-unit"
     />
-    <!-- <button mat-stroke-button class="button">add</button> -->
   </div>
-  <div class="list-group">
-    <div class="list-collection" *ngFor="let order of orders">
-      <div class="quantity body-1">{{ order.quantity }}</div>
-      <i class="arrow material-icons">edit</i>
-      <div class="list-item subtitle-1">
+  <div class="table-content">
+    <div class="list-item" *ngFor="let material of (materials$ | async)">
+      <div class="quantity body-1">{{ material.quantity }}</div>
+      <i class="edit-icon material-icons">edit</i>
+      <div class="list-content subtitle-1">
         <div class="list-title">
-          {{ order.material }}
+          {{ material.name }}
         </div>
         <svg class="completion-bar">
           <path d="M 0 0 H 700" class="completeion-bar-empty" />
@@ -40,9 +41,9 @@
           <path d="M 0 0 H 200" class="completeion-bar-delivered" />
         </svg>
         <div class="list-description body-2">
-          13 /
+          {{ material.processed }} /
           <span class="title-date">
-            23
+            {{ material.delivered }}
           </span>
         </div>
       </div>
