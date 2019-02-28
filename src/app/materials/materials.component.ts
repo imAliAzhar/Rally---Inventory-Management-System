@@ -10,42 +10,60 @@ import { DatabaseService } from '../database/database.service';
 })
 export class MaterialsComponent implements OnInit {
   materials$: Observable<Material[]>;
-
-  orders: Array<any>;
+  barWidth: number;
   isAddNewPanel: boolean;
+  selectedMaterial: Material;
+  selectedMaterialIndex: number;
 
   constructor(private db: DatabaseService) {
     this.materials$ = this.db.getMaterials();
-    const order = {
-      material: 'Angle Iron',
-      supplier: 'Rana Hamid',
-      quantity: 13,
-      unit: 'Rods',
-      date: new Date().toDateString()
-    };
-    this.orders = new Array<any>();
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
-    this.orders.push(order);
+    this.selectedMaterialIndex = 0;
+    this.barWidth = 700;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.materials$.subscribe(suppliers => {
+      this.selectedMaterial = suppliers[this.selectedMaterialIndex];
+    });
+  }
+
+  updateSelectedMaterial(material: Material, index: number) {
+    this.selectedMaterial = material;
+    this.selectedMaterialIndex = index;
+  }
+
+  renderQuantityBar(material: Material) {
+    return 'M 0 0 H ' + this.barWidth.toString();
+  }
+
+  renderProcessedBar(material: Material) {
+    return 'M 0 0 H ' + (material.processed / material.quantity) * this.barWidth;
+  }
+
+  renderDeliveredBar(material: Material) {
+    return 'M 0 0 H ' + (material.delivered / material.quantity) * this.barWidth;
+  }
 
   showAddPanel() {
     this.isAddNewPanel = !this.isAddNewPanel;
-    console.log('working', this.isAddNewPanel);
+  }
+
+  addMaterial(form: Material) {
+    const material = new Material(form.name, form.unit);
+    this.db.addMaterial(material);
+  }
+
+  removeMaterial(material: Material) {
+    this.db.removeMaterial(material);
+  }
+
+  processedChanged(element: Material, input: HTMLInputElement) {
+    console.log('chane', element);
+    this.db.updateMaterialProcessed(element, input.value);
+  }
+
+  deliveredChanged(element: Material, input: HTMLInputElement) {
+    this.db.updateMaterialDelivered(element, input.value);
   }
 
   scrollToTop() {
