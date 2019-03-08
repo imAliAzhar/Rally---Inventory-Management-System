@@ -32,10 +32,6 @@ export class SuppliersComponent implements OnInit {
     this.selectedSupplierIndex = index;
   }
 
-  renderQuantityBar(supplier: Supplier) {
-    return 'M 0 0 H ' + this.barWidth.toString();
-  }
-
   removeSupplier(supplier: Supplier) {
     this.db.removeSupplier(supplier);
   }

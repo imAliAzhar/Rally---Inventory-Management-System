@@ -56,7 +56,6 @@
   <div class="table-content">
     <span *ngFor="let supplier of (suppliers$ | async); index as i">
       <div class="list-item" (click)="updateSelectedSupplier(supplier, i)">
-        <div class="quantity body-1">{{ supplier.quantity }} <span class="unit"></span></div>
         <i class="edit-icon material-icons">edit</i>
         <div class="list-content subtitle-1">
           <div class="list-title">

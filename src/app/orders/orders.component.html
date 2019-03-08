@@ -1,3 +1,193 @@
-<p>
-  orders works!
-</p>
+<div class="orders-table">
+  <div class="title subtitle-1">
+    Orders
+  </div>
+  <i
+    class="plus-icon material-icons"
+    (click)="f.reset()"
+    [class.rotated]="isAddNewPanel"
+    (click)="showAddPanel()"
+  >
+    add
+  </i>
+  <div class="title-sum headline-3">
+    $12,132.43
+  </div>
+  <form
+    #f="ngForm"
+    (ngSubmit)="addOrder(f.value)"
+    class="add-new-panel"
+    [class.panel-hidden]="!isAddNewPanel"
+  >
+    <mat-form-field class="error-span" [floatLabel]="'never'" hideRequiredMarker>
+      <span class="error subtitle-1" *ngIf="material.touched && !material.valid">
+        material is required!
+      </span>
+      <input
+        type="text"
+        autocomplete="off"
+        ngModel
+        matInput
+        #material="ngModel"
+        name="material"
+        required
+        class="subtitle-1"
+        placeholder="material"
+        id="material-name"
+        (keyup)="onMaterialChange($event)"
+        [matAutocomplete]="autoMaterial"
+      />
+
+      <mat-autocomplete
+        class="auto"
+        #autoMaterial="matAutocomplete"
+        [displayWith]="displaySelectedName"
+        autoActiveFirstOption
+      >
+        <mat-option *ngIf="materialsLoading">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-option>
+
+        <mat-option disabled *ngIf="filteredMaterials?.length === 0">
+          Material not found
+        </mat-option>
+
+        <mat-option *ngFor="let material of filteredMaterials" [value]="material">
+          {{ material.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- <span>
+      <span class="error subtitle-1" *ngIf="supplier.touched && !supplier.valid">
+        supplier is required!
+      </span>
+      <input
+        type="text"    <span>
+      <span class="error subtitle-1" *ngIf="supplier.touched && !supplier.valid">
+        supplier is required!
+      </span>
+      <input
+        type="text"
+        autocomplete="off"
+        ngModel
+        #supplier="ngModel"
+        name="supplier"
+        required
+        class="subtitle-1"
+        placeholder="supplier"
+        id="supplier-name"
+        list="supplier-datalist"
+      />
+      <datalist id="supplier-datalist">
+        <option class="disabled" *ngIf="filteredMaterials?.length === 0">
+          Material not found
+        </option>
+        <option class="runn" *ngFor="let supplier of filteredSuppliers" [ngValue]="supplier">
+          {{ supplier.name }}
+        </option>
+      </datalist>
+    </span>
+    <span>
+      <span class="error subtitle-1" *ngIf="quantity.touched && !quantity.valid">
+        quantity is required!
+      </span>
+      <input
+        type="number"
+        autocomplete="off"
+        ngModel
+        #quantity="ngModel"
+        name="quantity"
+        required
+        class="subtitle-1"
+        placeholder="quantity"
+        id="quantity"
+      />
+    </span>
+        autocomplete="off"
+        ngModel
+        #supplier="ngModel"
+        name="supplier"
+        required
+        class="subtitle-1"
+        placeholder="supplier"
+        id="supplier-name"
+        list="supplier-datalist"
+      />
+      <datalist id="supplier-datalist">
+        <option class="disabled" *ngIf="filteredMaterials?.length === 0">
+          Material not found
+        </option>
+        <option class="runn" *ngFor="let supplier of filteredSuppliers" [ngValue]="supplier">
+          {{ supplier.name }}
+        </option>
+      </datalist>
+    </span>
+    <span>
+      <span class="error subtitle-1" *ngIf="quantity.touched && !quantity.valid">
+        quantity is required!
+      </span>
+      <input
+        type="number"
+        autocomplete="off"
+        ngModel
+        #quantity="ngModel"
+        name="quantity"
+        required
+        class="subtitle-1"
+        placeholder="quantity"
+        id="quantity"
+      />
+    </span> -->
+    <button class="tick-icon" [disabled]="!f.valid">
+      <i class="material-icons" [class.visible]="true">check</i>
+    </button>
+  </form>
+  <div class="table-content">
+    <span *ngFor="let order of (orders$ | async); index as i">
+      <div class="list-item" (click)="updateSelectedOrder(order, i)">
+        <div class="quantity body-1">{{ order.quantity }} <span class="unit"></span></div>
+        <i class="edit-icon material-icons">edit</i>
+        <div class="list-content subtitle-1">
+          <div class="list-title">
+            {{ order.material.name }}
+          </div>
+          <div class="list-description body-2">
+            {{ order.supplier.name }}
+            <span class="circle-seperator">🞄</span>
+            <span class="title-date"> {{ formatDate(order.date) }} </span>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </span>
+  </div>
+  <div class="see-all button" (click)="scrollToTop($event)">
+    go to top
+  </div>
+</div>
+
+<div class="right-sidebar">
+  <form>
+    <label for="material-name">Order</label>
+    <span class="tooltip">
+      <span class="tooltip-text body-2">not editable</span>
+      <input disabled class="material-name" [value]="selectedOrder?.material.name" type="text" />
+    </span>
+    <label for="quantity">Quantity</label>
+    <span class="tooltip">
+      <span class="tooltip-text body-2">not editable</span>
+      <input disabled class="quantity" [value]="selectedOrder?.quantity" type="text" />
+    </span>
+    <label for="supplier-name">Supplier</label>
+    <span class="tooltip">
+      <span class="tooltip-text body-2">not editable</span>
+      <input disabled class="supplier-name" [value]="selectedOrder?.supplier.name" type="text" />
+    </span>
+    <label for="date">Date</label>
+    <span class="tooltip">
+      <span class="tooltip-text body-2">not editable</span>
+      <input disabled class="date" [value]="formatDate(selectedOrder?.date)" type="text" />
+    </span>
+  </form>
+</div>

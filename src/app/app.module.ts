@@ -9,7 +9,12 @@ import { AppRoutingModule } from './app.routing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatProgressBarModule
+} from '@angular/material';
 
 import { environment } from 'src/environments/environment';
 
@@ -45,6 +50,8 @@ import { OrdersComponent } from './orders/orders.component';
     AppRoutingModule,
     MatButtonModule,
     MatInputModule,
+    MatAutocompleteModule,
+    MatProgressBarModule,
     FormsModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],

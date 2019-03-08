@@ -1,0 +1,318 @@
+@import "../../assets/_colors.sass"
+
+//==========================================SIDEBAR==============================//
+.right-sidebar
+    position: fixed
+    top: 0px
+    right: 0px
+    height: 100vh 
+    width: 300px
+    background-color: $background
+
+    form
+        position: relative  
+        float: right
+        margin-top: 10pc
+        width: 260px
+
+    // span    
+    //     position: relative
+
+    label
+        display: block
+        margin: 32px 0px 16px 0px
+        color: #ffffffaa
+        font-size: 14px
+        font-family: RobotoCondensed-Light
+
+    input
+        color: #ffffffcc
+        background-color: #00000000;
+        border: none;
+        border-bottom: 1px solid #ffffff33
+        width: 100pc
+        font-size: 16px
+        font-family: RobotoCondensed
+
+    input:focus, input:hover
+        color: #ffffff
+        outline: none
+
+    input[type="range"]
+        -webkit-appearance: none
+        width: 100%
+        height: 5px
+        background: #ffffff33
+        border: none
+        outline: none
+        opacity: 0.8
+        -webkit-transition: .3s
+        transition: opacity .3s
+        cursor: pointer
+        margin: 0px
+
+    input[type="range"]:hover
+        opacity: 1
+
+    input[type="range"]::-webkit-slider-thumb 
+        -webkit-appearance: none
+        appearance: none
+        width: 10px
+        height: 5px
+        background: #4CAF50
+
+    input[type="range"]::-ms-fill-lower 
+        background: dodgerblue
+
+    input:disabled
+        cursor: not-allowed
+
+
+//==========================================TABLE==============================//
+
+
+  
+.orders-table
+    float: left 
+    width: 1000px
+    background-color: $lightgray
+    margin: 16px
+
+    .title 
+        padding: 16px 16px 0px 16px
+
+    .title-sum
+        padding: 0px 16px 4px 16px
+
+    .plus-icon
+        float: right
+        position: relative
+        right: 2.9pc
+        top: 2.6pc
+        opacity: 0.7
+        cursor: pointer
+        transition: 0.3s
+
+    .plus-icon:hover
+        opacity: 1
+
+    .rotated // used by plus-icon
+        transform: rotate(45deg)
+        color: $orange
+
+    .tick-icon
+        color: #ffffffaa
+        float: right
+        position: relative
+        left: 2.3pc
+        bottom: 2.45pc
+        opacity: 0.7
+        cursor: pointer
+        visibility: hidden
+        transition: 0.3s
+
+    .tick-icon:hover
+        color: #ffffff
+
+    .visible // used by tick-icon
+        visibility: visible
+
+    .add-new-panel
+        max-height: 72px
+        opacity: 1
+        transition: opacity 0.3s ease 0.1s, max-height 0.3s
+
+        form
+            display: inline
+            z-index: -1
+
+        span    
+            position: relative
+            
+            .error
+                position: absolute
+                color: $orange
+                right: 16px
+                top: 0px
+                opacity: 0.7
+
+            input
+                background-color: $background
+                width: 308px
+                height: 24px;
+                color: $white
+                padding: 12px
+                display: inline-block
+                border: none
+            
+            #material-name
+                border-right: 1px solid $lightgray
+            #supplier-name
+                border-left: 1px solid $lightgray
+                border-right: 1px solid $lightgray
+            #quantity
+                border-left: 1px solid $lightgray
+
+            input:focus
+                outline: none
+
+    .panel-hidden
+        opacity: 0
+        max-height: 0
+        overflow: hidden
+
+
+    .table-content
+        color: #ffffffaa
+        position: relative
+        text-align:center
+        border-top: 2px solid
+        border-image:   linear-gradient(to right, $green 25%, $darkgreen 25%, $darkgreen 60%, teal 60%, teal 75%, green 75%) 5
+
+        .list-item
+            transition: 0.3s
+            cursor: pointer
+
+            .list-content
+                margin: 16px
+                border-left: 4px solid $green
+                padding: 0px 8px 0px 8px 
+
+                .list-title
+                    
+                .list-description
+                    display: inline
+                    color: #ffffff44
+                    font-size: 0.8em
+
+                    .circle-seperator
+                        margin: 5px
+
+            hr  
+                width: 57.53em
+                background-color: $gray
+                height: 1px
+                border: none
+
+        .list-item:hover
+            color: #ffffff 
+
+            .edit-icon
+                visibility: visible
+
+            .list-content
+                border-left: 4px solid $lightgreen
+
+                .list-description
+                    color: #ffffff55
+
+        .quantity
+            font-size: 1.3em
+            float: right
+            position: absolute
+            right: 48px
+            padding-top: 4px
+
+            .unit
+                text-transform: uppercase
+                font-size: 0.7em
+
+        .edit-icon  
+            font-size: 16px
+            color: #ffffff44
+            float: right
+            margin: 14px
+            visibility: hidden
+
+
+    .see-all
+        text-align: center
+        margin: 8px
+        color: #ffffffaa
+        cursor: pointer
+        letter-spacing: 1px
+        transition: 0.3s
+
+    .see-all:hover
+        color: #ffffff
+
+.tooltip:hover
+    .tooltip-text
+        visibility: visible
+
+.tooltip-text
+    position: absolute
+    visibility: hidden
+    color: #ffffff55
+    left: 170px
+    transition: 0.3s
+
+.error-span
+    position: relative
+
+.error
+    color: $orange
+    position: absolute !important
+    right: 16px
+    top: 2px
+    opacity: 0.7
+
+::ng-deep .mat-form-field-underline
+    display: none
+
+::ng-deep .mat-form-field
+    background-color: $background
+    height: 48px
+
+::ng-deep .mat-form-field-infix
+    font-family: RobotoCondensed
+    font-size: 16px
+    color: $white
+    padding: 0px 0px 16px 12px !important
+    // padding: 12px !important
+    width: 308px  !important
+    max-width:  308px !important
+    // height: 48px !important
+
+::ng-deep .mat-form-field-label
+      color: #ffffff !important
+      opacity: 0.4 !important
+      left: 12px !important
+      top: 16px !important
+      
+::ng-deep .mat-form-field-wrapper
+    padding: 0px !important
+
+::ng-deep .mat-form-field
+    font-size: 15px !important
+    font-weight: 100 !important
+    line-height: 1 !important
+
+::ng-deep .mat-option
+    color: $white !important
+    background-color: $background !important
+    border-bottom: solid 1px $gray 
+    opacity: 0.7
+    font-family: RobotoCondensed
+    font-size: 16px
+    transition: 0.3s
+
+::ng-deep .mat-option:hover
+    opacity: 1
+
+::ng-deep .mat-option[aria-disabled=true]
+    opacity: 0.2
+
+::ng-deep .mat-autocomplete-panel:not([class*=mat-elevation-z])
+    box-shadow: none
+
+::ng-deep .mat-autocomplete-panel
+    background-color: $gray !important
+    border-radius: 0px !important
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar
+    width: 2px
+    background-color: #00000000 !important
+
+::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb
+    background-color: $darkgreen !important
