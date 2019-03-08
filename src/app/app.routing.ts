@@ -1,9 +1,12 @@
-import { MaterialsComponent } from './materials/materials.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+import { MaterialsComponent } from './materials/materials.component';
+import { OrdersComponent } from './orders/orders.component';
+import { SuppliersComponent } from './suppliers/suppliers.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 
@@ -26,8 +29,12 @@ const routes: Routes = [
         component: MaterialsComponent
       },
       {
+        path: 'orders',
+        component: OrdersComponent
+      },
+      {
         path: 'suppliers',
-        component: DashboardComponent
+        component: SuppliersComponent
       }
     ]
   },

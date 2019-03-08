@@ -58,7 +58,6 @@ export class MaterialsComponent implements OnInit {
   }
 
   processedChanged(element: Material, input: HTMLInputElement) {
-    console.log('chane', element);
     this.db.updateMaterialProcessed(element, input.value);
   }
 
@@ -67,7 +66,6 @@ export class MaterialsComponent implements OnInit {
   }
 
   scrollToTop() {
-    console.log('scoll');
     const scrollToTop = window.setInterval(() => {
       const pos = window.pageYOffset;
       if (pos > 0) {

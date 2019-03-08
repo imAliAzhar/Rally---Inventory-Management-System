@@ -2,9 +2,14 @@
   <div class="title subtitle-1">
     Materials
   </div>
-  <i class="plus-icon material-icons" [class.rotated]="isAddNewPanel" (click)="showAddPanel()"
-    >add</i
+  <i
+    class="plus-icon material-icons"
+    (click)="f.reset()"
+    [class.rotated]="isAddNewPanel"
+    (click)="showAddPanel()"
   >
+    add
+  </i>
   <div class="title-sum headline-3">
     $12,132.43
   </div>
@@ -43,13 +48,13 @@
       />
     </span>
     <button class="tick-icon" [disabled]="!f.valid">
-      <i class="material-icons" [class.visible]="isAddNewPanel" (click)="showAddPanel()">check</i>
+      <i class="material-icons" [class.visible]="true">check</i>
     </button>
   </form>
   <div class="table-content">
     <span *ngFor="let material of (materials$ | async); index as i">
       <div class="list-item" (click)="updateSelectedMaterial(material, i)">
-        <div class="quantity body-1">{{ material.quantity }}</div>
+        <div class="quantity body-1">{{ material.quantity }} <span class="unit"></span></div>
         <i class="edit-icon material-icons">edit</i>
         <div class="list-content subtitle-1">
           <div class="list-title">

@@ -1,0 +1,94 @@
+<div class="suppliers-table">
+  <div class="title subtitle-1">
+    Suppliers
+  </div>
+  <i
+    class="plus-icon material-icons"
+    (click)="f.reset()"
+    [class.rotated]="isAddNewPanel"
+    (click)="showAddPanel()"
+  >
+    add
+  </i>
+  <div class="title-sum headline-3">
+    $12,132.43
+  </div>
+  <form
+    #f="ngForm"
+    (ngSubmit)="addSupplier(f.value)"
+    class="add-new-panel"
+    [class.panel-hidden]="!isAddNewPanel"
+  >
+    <span>
+      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name is required!</span>
+      <input
+        type="text"
+        autocomplete="off"
+        ngModel
+        #name="ngModel"
+        name="name"
+        required
+        class="subtitle-1"
+        placeholder="name"
+        id="supplier-name"
+      />
+    </span>
+    <span>
+      <span class="error subtitle-1" *ngIf="number.touched && !number.valid">
+        number is required!
+      </span>
+      <input
+        type="text"
+        autocomplete="off"
+        ngModel
+        #number="ngModel"
+        name="number"
+        required
+        class="subtitle-1"
+        placeholder="contact number"
+        id="supplier-unit"
+      />
+    </span>
+    <button class="tick-icon" [disabled]="!f.valid">
+      <i class="material-icons" [class.visible]="true">check</i>
+    </button>
+  </form>
+  <div class="table-content">
+    <span *ngFor="let supplier of (suppliers$ | async); index as i">
+      <div class="list-item" (click)="updateSelectedSupplier(supplier, i)">
+        <div class="quantity body-1">{{ supplier.quantity }} <span class="unit"></span></div>
+        <i class="edit-icon material-icons">edit</i>
+        <div class="list-content subtitle-1">
+          <div class="list-title">
+            {{ supplier.name }}
+          </div>
+          <div class="list-description body-2">
+            {{ supplier.number }}
+          </div>
+        </div>
+        <hr />
+      </div>
+    </span>
+  </div>
+  <div class="see-all button" (click)="scrollToTop($event)">
+    go to top
+  </div>
+</div>
+
+<div class="right-sidebar">
+  <form>
+    <label for="supplier-name">Supplier</label>
+    <span class="tooltip">
+      <span class="tooltip-text body-2">not editable</span>
+      <input disabled class="supplier-name" [value]="selectedSupplier?.name" type="text" />
+    </span>
+    <label for="contact-number">Contact Number</label>
+    <input
+      #updatedNumber
+      class="contact-number"
+      type="number"
+      [value]="selectedSupplier?.number"
+      (keyup)="numberChanged(selectedSupplier, updatedNumber)"
+    />
+  </form>
+</div>

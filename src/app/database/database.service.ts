@@ -55,6 +55,10 @@ export class DatabaseService {
     this.suppliersCollection.doc(supplier.name).delete();
   }
 
+  updateSupplierNumber(supplier: Supplier, updatedNumber: string) {
+    this.suppliersCollection.doc(supplier.name).update({ number: updatedNumber });
+  }
+
   getOrders(): Observable<Order[]> {
     return this.ordersCollection.valueChanges();
   }
