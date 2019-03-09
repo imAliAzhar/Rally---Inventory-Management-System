@@ -1,13 +1,17 @@
 const { app, BrowserWindow } = require("electron");
 
+const path = require("path");
+const url = require("url");
+const electron = require("electron");
+
 let win;
 
 function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({
-    width: 600,
-    height: 600
-  });
+  const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
+  win = new BrowserWindow({ width: width, height: height, frame: false });
+  win.maximize();
+  win.isResizable(false);
+  win.setMenuBarVisibility(false);
 
   win.loadURL(
     url.format({

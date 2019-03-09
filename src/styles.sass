@@ -30,6 +30,23 @@ body
 body::-webkit-scrollbar 
     width: 0
 
+#electron-titlebar 
+    position: fixed !important
+    background-color: #282a32 !important
+    color: white !important
+    height: 30px !important
+    z-index: 100 !important
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important
+
+
+#electron-titlebar > div:first-child
+        font-family: Sans-Serif !important
+        display: table !important
+        position: relative !important
+        width: fit-content !important
+        margin: 9px auto 0px auto !important
+        font-size: 12px !important
+
 .headline-1
     font-family: RobotoCondensed-Light
     font-size: 96px
