@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Order } from 'src/models/Order';
 import { DatabaseService } from '../database/database.service';
@@ -15,7 +15,7 @@ interface OrderFormData {
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.sass']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
   suppliers: Supplier[];
   filteredSuppliers: Supplier[];
   suppliersSubscription: Subscription;
@@ -27,6 +27,7 @@ export class OrdersComponent implements OnInit {
   materialsLoading = true;
 
   orders$: Observable<Order[]>;
+  ordersSubscription: Subscription;
   showProgressBar = true;
 
   isAddNewPanel: boolean;
@@ -36,7 +37,6 @@ export class OrdersComponent implements OnInit {
   constructor(private db: DatabaseService) {
     this.orders$ = this.db.getOrders();
     this.selectedOrderIndex = 0;
-    this.isAddNewPanel = true;
   }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class OrdersComponent implements OnInit {
       this.materialsLoading = false;
     });
 
-    this.orders$.subscribe(orders => {
+    this.ordersSubscription = this.orders$.subscribe(orders => {
       this.selectedOrder = orders[this.selectedOrderIndex];
       this.showProgressBar = false;
     });
@@ -61,6 +61,7 @@ export class OrdersComponent implements OnInit {
   ngOnDestroy() {
     this.suppliersSubscription.unsubscribe();
     this.materialsSubscription.unsubscribe();
+    this.ordersSubscription.unsubscribe();
   }
 
   onSupplierChange(event) {

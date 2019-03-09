@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Supplier } from 'src/models/Supplier';
 import { DatabaseService } from '../database/database.service';
 
@@ -8,9 +8,9 @@ import { DatabaseService } from '../database/database.service';
   templateUrl: './suppliers.component.html',
   styleUrls: ['./suppliers.component.sass']
 })
-export class SuppliersComponent implements OnInit {
+export class SuppliersComponent implements OnInit, OnDestroy {
   suppliers$: Observable<Supplier[]>;
-  barWidth: number;
+  suppliersSubscription: Subscription;
   isAddNewPanel: boolean;
   selectedSupplier: Supplier;
   selectedSupplierIndex: number;
@@ -18,13 +18,16 @@ export class SuppliersComponent implements OnInit {
   constructor(private db: DatabaseService) {
     this.suppliers$ = this.db.getSuppliers();
     this.selectedSupplierIndex = 0;
-    this.barWidth = 700;
   }
 
   ngOnInit() {
-    this.suppliers$.subscribe(suppliers => {
+    this.suppliersSubscription = this.suppliers$.subscribe(suppliers => {
       this.selectedSupplier = suppliers[this.selectedSupplierIndex];
     });
+  }
+
+  ngOnDestroy() {
+    this.suppliersSubscription.unsubscribe();
   }
 
   updateSelectedSupplier(supplier: Supplier, index: number) {

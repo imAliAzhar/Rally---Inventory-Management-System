@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Material } from 'src/models/Material';
 import { DatabaseService } from '../database/database.service';
 
@@ -8,8 +8,9 @@ import { DatabaseService } from '../database/database.service';
   templateUrl: './materials.component.html',
   styleUrls: ['./materials.component.sass']
 })
-export class MaterialsComponent implements OnInit {
+export class MaterialsComponent implements OnInit, OnDestroy {
   materials$: Observable<Material[]>;
+  materialsSubscription: Subscription;
   barWidth: number;
   isAddNewPanel: boolean;
   selectedMaterial: Material;
@@ -22,9 +23,13 @@ export class MaterialsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.materials$.subscribe(suppliers => {
+    this.materialsSubscription = this.materials$.subscribe(suppliers => {
       this.selectedMaterial = suppliers[this.selectedMaterialIndex];
     });
+  }
+
+  ngOnDestroy() {
+    this.materialsSubscription.unsubscribe();
   }
 
   updateSelectedMaterial(material: Material, index: number) {
