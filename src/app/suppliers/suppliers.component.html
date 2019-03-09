@@ -53,7 +53,7 @@
       <i class="material-icons" [class.visible]="true">check</i>
     </button>
   </form>
-  <div class="table-content">
+  <div class="table-content" [class.top-margin-for-panel]="isAddNewPanel">
     <span *ngFor="let supplier of (suppliers$ | async); index as i">
       <div class="list-item" (click)="updateSelectedSupplier(supplier, i)">
         <i class="edit-icon material-icons">edit</i>

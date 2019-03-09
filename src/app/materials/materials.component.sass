@@ -104,8 +104,8 @@
         color: #ffffffaa
         float: right
         position: relative
-        left: 2.3pc
-        bottom: 2.45pc
+        left: 0.3pc
+        top: 0.5pc
         opacity: 0.7
         cursor: pointer
         visibility: hidden
@@ -118,9 +118,9 @@
         visibility: visible
 
     .add-new-panel
-        max-height: 72px
+        position: absolute
         opacity: 1
-        transition: opacity 0.3s ease 0.1s, max-height 0.3s
+        transition: opacity 0.3s linear 0.1s, max-height 0.3s
 
         form
             display: inline
@@ -155,11 +155,13 @@
 
     .panel-hidden
         opacity: 0
-        max-height: 0
-        overflow: hidden
+        transition: opacity 0s linear 0.1s, max-height 0.3s
 
+    .top-margin-for-panel
+        margin-top: 48px
 
     .table-content
+        transition: 0.3s
         color: #ffffffaa
         position: relative
         text-align:center
