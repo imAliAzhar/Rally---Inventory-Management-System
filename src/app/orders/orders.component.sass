@@ -145,13 +145,6 @@
                 display: inline-block
                 border: none
             
-            #material-name
-                border-right: 1px solid $lightgray
-            #supplier-name
-                border-left: 1px solid $lightgray
-                border-right: 1px solid $lightgray
-            #quantity
-                border-left: 1px solid $lightgray
 
             input:focus
                 outline: none
@@ -269,10 +262,6 @@
     font-size: 16px
     color: $white
     padding: 0px 0px 16px 12px !important
-    // padding: 12px !important
-    width: 308px  !important
-    max-width:  308px !important
-    // height: 48px !important
 
 ::ng-deep .mat-form-field-label
       color: #ffffff !important
@@ -282,6 +271,7 @@
       
 ::ng-deep .mat-form-field-wrapper
     padding: 0px !important
+    width: 332px !important
 
 ::ng-deep .mat-form-field
     font-size: 15px !important
@@ -316,3 +306,12 @@
 
 ::ng-deep .mat-autocomplete-panel::-webkit-scrollbar-thumb
     background-color: $darkgreen !important
+
+::ng-deep .material-name
+    border-right: 1px solid $lightgray !important
+
+::ng-deep .supplier-name
+    border-left: 1px solid $lightgray !important
+    border-right: 1px solid $lightgray !important
+#quantity
+    border-left: 1px solid $lightgray
