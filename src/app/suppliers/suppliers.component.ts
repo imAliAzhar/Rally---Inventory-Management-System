@@ -14,15 +14,18 @@ export class SuppliersComponent implements OnInit, OnDestroy {
   isAddNewPanel: boolean;
   selectedSupplier: Supplier;
   selectedSupplierIndex: number;
+  loadingData: boolean;
 
   constructor(private db: DatabaseService) {
     this.suppliers$ = this.db.getSuppliers();
     this.selectedSupplierIndex = 0;
+    this.loadingData = true;
   }
 
   ngOnInit() {
     this.suppliersSubscription = this.suppliers$.subscribe(suppliers => {
       this.selectedSupplier = suppliers[this.selectedSupplierIndex];
+      this.loadingData = false;
     });
   }
 

@@ -1,0 +1,60 @@
+@import "../../../assets/_colors.sass"
+
+.list-item
+    transition: 0.3s
+    cursor: pointer
+    position: relative
+    animation: 1s ease 0s pulse infinite
+
+    .list-content
+        margin: 16px 8px 16px 16px
+        padding: 0px 8px 0px 8px 
+        border-left: 4px solid $green
+        height: 38.4px
+
+        div
+            background-color: $placeholder
+            margin: 10px 0px 10px 0px
+        .first-line
+            height: 16px
+            width: 60px 
+        .second-line
+            height: 8px
+            width: 70px 
+        .third-line
+            position: absolute
+            width: 640px 
+            height: 5px
+            width: 39.9pc
+            left: 166px
+            top: 12px
+
+        .quantity
+            float: right
+            position: absolute
+            right: 40px
+            top: 4px
+            padding-top: 4px
+            height: 16px
+            width: 24px
+    hr  
+        width: 57.53em
+        background-color: $gray
+        height: 1px
+        border: none
+
+@keyframes pulse
+    0%
+        opacity: 0.2
+        // transform: scale(1)
+    50%
+        // transform: scale(1.002)
+    100%
+        opacity: 1
+        // transform: scale(1)
+
+
+@for $i from 1 through 6
+    .list-item
+        &:nth-child(#{$i}) 
+            animation-delay: $i * (1s / 10)

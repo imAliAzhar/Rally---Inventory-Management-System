@@ -48,7 +48,7 @@
         </mat-option>
 
         <mat-option disabled *ngIf="filteredMaterials?.length === 0">
-          Material not found
+          material not found
         </mat-option>
 
         <mat-option *ngFor="let material of filteredMaterials" [value]="material">
@@ -94,71 +94,6 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <!-- <span>
-      <span class="error subtitle-1" *ngIf="supplier.touched && !supplier.valid">
-        supplier is required!
-      </span>
-      <input
-        type="text"    <span>
-      <span class="error subtitle-1" *ngIf="supplier.touched && !supplier.valid">
-        supplier is required!
-      </span>
-      <input
-        type="text"
-        autocomplete="off"
-        ngModel
-        #supplier="ngModel"
-        name="supplier"
-        required
-        class="subtitle-1"
-        placeholder="supplier"
-        id="supplier-name"
-        list="supplier-datalist"
-      />
-      <datalist id="supplier-datalist">
-        <option class="disabled" *ngIf="filteredMaterials?.length === 0">
-          Material not found
-        </option>
-        <option class="runn" *ngFor="let supplier of filteredSuppliers" [ngValue]="supplier">
-          {{ supplier.name }}
-        </option>
-      </datalist>
-    </span>
-    <span>
-      <span class="error subtitle-1" *ngIf="quantity.touched && !quantity.valid">
-        quantity is required!
-      </span>
-      <input
-        type="number"
-        autocomplete="off"
-        ngModel
-        #quantity="ngModel"
-        name="quantity"
-        required
-        class="subtitle-1"
-        placeholder="quantity"
-        id="quantity"
-      />
-    </span>
-        autocomplete="off"
-        ngModel
-        #supplier="ngModel"
-        name="supplier"
-        required
-        class="subtitle-1"
-        placeholder="supplier"
-        id="supplier-name"
-        list="supplier-datalist"
-      />
-      <datalist id="supplier-datalist">
-        <option class="disabled" *ngIf="filteredMaterials?.length === 0">
-          Material not found
-        </option>
-        <option class="runn" *ngFor="let supplier of filteredSuppliers" [ngValue]="supplier">
-          {{ supplier.name }}
-        </option>
-      </datalist>
-    </span> -->
     <span>
       <span class="error subtitle-1" *ngIf="quantity.touched && !quantity.valid">
         quantity is required!
@@ -180,6 +115,7 @@
     </button>
   </form>
   <div class="table-content" [class.top-margin-for-panel]="isAddNewPanel">
+    <app-order-loader *ngIf="loadingData"></app-order-loader>
     <span *ngFor="let order of (orders$ | async); index as i">
       <div class="list-item" (click)="updateSelectedOrder(order, i)">
         <div class="quantity body-1">{{ order.quantity }} <span class="unit"></span></div>

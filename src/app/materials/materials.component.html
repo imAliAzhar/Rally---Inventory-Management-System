@@ -52,6 +52,7 @@
     </button>
   </form>
   <div class="table-content" [class.top-margin-for-panel]="isAddNewPanel">
+    <app-table-loader *ngIf="loadingData"></app-table-loader>
     <span *ngFor="let material of (materials$ | async); index as i">
       <div class="list-item" (click)="updateSelectedMaterial(material, i)">
         <div class="quantity body-1">{{ material.quantity }} <span class="unit"></span></div>

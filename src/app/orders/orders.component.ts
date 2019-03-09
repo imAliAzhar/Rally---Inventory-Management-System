@@ -28,7 +28,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   orders$: Observable<Order[]>;
   ordersSubscription: Subscription;
-  showProgressBar = true;
+  loadingData: boolean;
 
   isAddNewPanel: boolean;
   selectedOrder: Order;
@@ -37,6 +37,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   constructor(private db: DatabaseService) {
     this.orders$ = this.db.getOrders();
     this.selectedOrderIndex = 0;
+    this.loadingData = true;
   }
 
   ngOnInit() {
@@ -54,7 +55,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
     this.ordersSubscription = this.orders$.subscribe(orders => {
       this.selectedOrder = orders[this.selectedOrderIndex];
-      this.showProgressBar = false;
+      this.loadingData = false;
     });
   }
 

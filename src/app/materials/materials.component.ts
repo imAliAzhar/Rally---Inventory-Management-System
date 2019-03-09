@@ -15,16 +15,19 @@ export class MaterialsComponent implements OnInit, OnDestroy {
   isAddNewPanel: boolean;
   selectedMaterial: Material;
   selectedMaterialIndex: number;
+  loadingData: boolean;
 
   constructor(private db: DatabaseService) {
     this.materials$ = this.db.getMaterials();
     this.selectedMaterialIndex = 0;
     this.barWidth = 700;
+    this.loadingData = true;
   }
 
   ngOnInit() {
     this.materialsSubscription = this.materials$.subscribe(suppliers => {
       this.selectedMaterial = suppliers[this.selectedMaterialIndex];
+      this.loadingData = false;
     });
   }
 

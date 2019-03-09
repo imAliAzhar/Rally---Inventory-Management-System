@@ -28,6 +28,9 @@ import { OrdersSummaryComponent } from './dashboard/orders-summary/orders-summar
 import { MaterialsComponent } from './materials/materials.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { OrdersComponent } from './orders/orders.component';
+import { TableLoaderComponent } from './shared/table-loader/table-loader.component';
+import { SupplierLoaderComponent } from './shared/supplier-loader/supplier-loader.component';
+import { OrderLoaderComponent } from './shared/order-loader/order-loader.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { OrdersComponent } from './orders/orders.component';
     OrdersSummaryComponent,
     MaterialsComponent,
     SuppliersComponent,
-    OrdersComponent
+    OrdersComponent,
+    TableLoaderComponent,
+    SupplierLoaderComponent,
+    OrderLoaderComponent
   ],
   imports: [
     BrowserModule,
