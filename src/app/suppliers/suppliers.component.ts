@@ -33,6 +33,10 @@ export class SuppliersComponent implements OnInit, OnDestroy {
     this.suppliersSubscription.unsubscribe();
   }
 
+  addSupplier(supplier: Supplier) {
+    this.db.addSupplier(supplier);
+  }
+
   updateSelectedSupplier(supplier: Supplier, index: number) {
     this.selectedSupplier = supplier;
     this.selectedSupplierIndex = index;

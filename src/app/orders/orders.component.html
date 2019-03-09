@@ -81,7 +81,7 @@
         [displayWith]="displaySelectedName"
         autoActiveFirstOption
       >
-        <mat-option *ngIf="supplierLoading">
+        <mat-option *ngIf="suppliersLoading">
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </mat-option>
 
@@ -134,7 +134,7 @@
       </div>
     </span>
   </div>
-  <div class="see-all button" (click)="scrollToTop($event)">
+  <div class="see-all button" (click)="scrollToTop()">
     go to top
   </div>
 </div>

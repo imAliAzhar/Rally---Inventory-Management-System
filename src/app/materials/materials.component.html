@@ -75,7 +75,7 @@
       </div>
     </span>
   </div>
-  <div class="see-all button" (click)="scrollToTop($event)">
+  <div class="see-all button" (click)="scrollToTop()">
     go to top
   </div>
 </div>
@@ -110,7 +110,7 @@
       class="material-delivered"
       type="number"
       [value]="selectedMaterial?.delivered"
-      (keyup)="deliveredChanged(selectedMaterial, updatedDilvered)"
+      (keyup)="deliveredChanged(selectedMaterial, updatedDelivered)"
     />
   </form>
 </div>
