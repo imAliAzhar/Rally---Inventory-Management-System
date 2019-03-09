@@ -11,6 +11,12 @@ export interface Credentials {
   password: string;
 }
 
+export interface SignupCredentials {
+  email: string;
+  password: string;
+  password2: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +40,7 @@ export class AuthService {
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(() => this.router.navigate(['/register']));
+    this.afAuth.auth.signOut().then(() => this.router.navigate(['/login']));
   }
 
   createAccount(credentials: Credentials): Promise<auth.UserCredential> {

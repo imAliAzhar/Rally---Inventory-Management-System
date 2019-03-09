@@ -43,7 +43,6 @@ button
         color: $white
         padding: 12px
         margin: 12px
-        // text-align: center
         display: block
 
     input:focus
@@ -61,121 +60,22 @@ button
         float: left
         margin-top: 8px
         margin-left: 12px
-    
-    .checkbox
-        float: left
-        margin-top: 8px
-        margin-left: 0px
-        height: 3px
-        width: 3px
-        background-color: #00000000
-        border-color: $darkgreen
-        border-radius: 50%
-        border: 2px solid $green
-        -webkit-appearance: none
-        cursor: pointer;
 
-    .checkbox:checked
-        background-color: $green
-
-
-
-label 
-    display: inline-block
-    color: #fff
-    cursor: pointer
+.error-span
     position: relative
-  
-  
-    span
-        display: inline-block
-        position: relative
-        background-color: transparent
-        width: 15px
-        height: 15px
-        transform-origin: center
-        border: 2px solid $darkgreen
-        border-radius: 50%
-        vertical-align: -6px
-        margin-right: 10px
-        transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89)
-  
-        &:before 
-            content: "";
-            width: 0px;
-            height: 2px;
-            border-radius: 2px;
-            background: $darkgreen
-            position: absolute;
-            transform: rotate(45deg);
-            top: 6px; // you'll need to experiment with placement depending on the dimensions you've chosen
-            left: 4px; // you'll need to experiment with placement depending on the dimensions you've chosen
-            transition: width 50ms ease 50ms;
-            transform-origin: 0% 0%;
-            
-    
-        &:after 
-            content: "";
-            width: 0;
-            height: 2px;
-            border-radius: 2px; // so that the tick has nice rounded look
-            background: $darkgreen
-            position: absolute;
-            transform: rotate(305deg);
-            top: 10px; // you'll need to experiment with placement depending on the dimensions you've chosen
-            left: 5px; // you'll need to experiment with placement depending on the dimensions you've chosen
-            transition: width 50ms ease;
-            transform-origin: 0% 0%;
-    
-  
-        // Time to add some life to it
-        
-        &:hover 
-            span 
-            &:before 
-                width: 5px;
-                transition: width 100ms ease;
-            
-            
-            &:after 
-                width: 10px;
-                transition: width 150ms ease 100ms;
 
-input[type="checkbox"] 
-    display: none
-  
-    &:checked + label 
-        span 
-            background-color: #00000000
-            // transform: scale(1.25)
-        
-            &:after 
-                width: 10px
-                // background: #1790b5
-                transition: width 150ms ease 100ms
-            
-            &:before 
-                width: 5px
-                // background: #1790b5
-                transition: width 150ms ease 100ms
-        
-        &:hover  
-            span 
-                background-color: #00000000
-                // transform: scale(1.1)
+.error
+    position: absolute
+    width: max-content
+    right: 24px
+    top: 15px
+    color: $orange
+    opacity: 0.7   
 
-                &:after 
-                    width: 10px;
-                    // background: #1790b5;
-                    transition: width 150ms ease 100ms
-          
-
-                &:before 
-                    width: 5px;
-                    // background: #1790b5;
-                    transition: width 150ms ease 100ms
-          
-         
-      
-    
-  
+.message
+    color: $orange
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 64px
+    width: 250px
+    text-align: center

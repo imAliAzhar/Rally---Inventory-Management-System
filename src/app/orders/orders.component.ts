@@ -99,8 +99,12 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   formatDate(date: string) {
-    const d = new Date(date);
-    return d.toDateString();
+    if (date != undefined) {
+      const d = new Date(date);
+      return d.toDateString();
+    } else {
+      return '';
+    }
   }
 
   updateSelectedOrder(order: Order, index: number) {

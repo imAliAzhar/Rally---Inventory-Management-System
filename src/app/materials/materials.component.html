@@ -20,7 +20,7 @@
     [class.panel-hidden]="!isAddNewPanel"
   >
     <span>
-      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name is required!</span>
+      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name required!</span>
       <input
         type="text"
         autocomplete="off"
@@ -34,7 +34,7 @@
       />
     </span>
     <span>
-      <span class="error subtitle-1" *ngIf="unit.touched && !unit.valid">unit is required!</span>
+      <span class="error subtitle-1" *ngIf="unit.touched && !unit.valid">unit required!</span>
       <input
         type="text"
         autocomplete="off"

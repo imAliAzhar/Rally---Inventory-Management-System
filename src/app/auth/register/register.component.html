@@ -11,11 +11,52 @@
     </button>
   </span>
 </div>
-<div class="login-area">
-  <input type="text" autocomplete="off" class="subtitle-1" placeholder="email" />
-  <input type="password" autocomplete="off" class="subtitle-1" placeholder="password" />
-  <input type="password" autocomplete="off" class="subtitle-1" placeholder="confirm password" />
-  <div class="confirmations">
-    <button mat-flat-button class="button">Register</button>
+<form #f="ngForm" (ngSubmit)="register(f.value)" class="login-area">
+  <div class="error-span">
+    <span class="error subtitle-1" *ngIf="email.touched && !email.valid">email required!</span>
+    <input
+      type="text"
+      autocomplete="off"
+      ngModel
+      #email="ngModel"
+      name="email"
+      required
+      class="subtitle-1"
+      placeholder="email"
+    />
   </div>
-</div>
+  <div class="error-span">
+    <span class="error subtitle-1" *ngIf="password.touched && !password.valid">
+      password required!
+    </span>
+    <input
+      type="password"
+      autocomplete="off"
+      ngModel
+      #password="ngModel"
+      name="password"
+      required
+      class="subtitle-1"
+      placeholder="password"
+    />
+  </div>
+  <div class="error-span">
+    <span class="error subtitle-1" *ngIf="password2.touched && !password2.valid">
+      password required!
+    </span>
+    <input
+      type="password"
+      autocomplete="off"
+      ngModel
+      #password2="ngModel"
+      name="password2"
+      required
+      class="subtitle-1"
+      placeholder="confirm password"
+    />
+  </div>
+  <div class="confirmations">
+    <button mat-flat-button class="button" [disabled]="!f.valid">Register</button>
+    <div class="message subtitle-1">{{ message }}</div>
+  </div>
+</form>

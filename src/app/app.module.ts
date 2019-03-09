@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app.routing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
+import { CoreModule } from './core/core.module';
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -58,7 +60,8 @@ import { OrderLoaderComponent } from './shared/order-loader/order-loader.compone
     MatInputModule,
     MatAutocompleteModule,
     MatProgressBarModule,
-    FormsModule
+    FormsModule,
+    CoreModule
   ],
   providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
