@@ -25,9 +25,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LayoutComponent } from './layout/layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { OrdersSummaryComponent } from './dashboard/orders-summary/orders-summary.component';
 import { MaterialsComponent } from './materials/materials.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -41,9 +39,7 @@ import { OrderLoaderComponent } from './shared/order-loader/order-loader.compone
     LoginComponent,
     RegisterComponent,
     LayoutComponent,
-    DashboardComponent,
     SidebarComponent,
-    OrdersSummaryComponent,
     MaterialsComponent,
     SuppliersComponent,
     OrdersComponent,

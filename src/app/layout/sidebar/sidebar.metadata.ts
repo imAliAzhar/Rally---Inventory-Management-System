@@ -6,11 +6,6 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: '/dashboard',
-    title: 'Dashboard',
-    icon: 'donut_small'
-  },
-  {
     path: '/materials',
     title: 'Materials',
     icon: 'poll'

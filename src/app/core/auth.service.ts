@@ -33,7 +33,7 @@ export class AuthService {
         .signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(userCredential => {
           onSuccess(userCredential);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/materials']);
         })
         .catch(error => onFail(error));
     });

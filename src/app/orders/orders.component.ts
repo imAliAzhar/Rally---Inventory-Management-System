@@ -5,11 +5,6 @@ import { DatabaseService } from '../database/database.service';
 import { Material } from 'src/models/Material';
 import { Supplier } from 'src/models/Supplier';
 
-interface OrderFormData {
-  material: string;
-  supplier: string;
-  quantity: number;
-}
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -40,6 +35,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.selectedOrderIndex = 0;
     this.loadingData = true;
     this.date = new Date().toDateString();
+    // this.isAddNewPanel = true;
   }
 
   ngOnInit() {
@@ -83,16 +79,8 @@ export class OrdersComponent implements OnInit, OnDestroy {
     this.filteredMaterials = this.filter(event.target.value, this.materials);
   }
 
-  addOrder(orderFormData: OrderFormData) {
-    const mat = this.materials.find(material => material.name === orderFormData.material);
-    const sup = this.suppliers.find(supplier => supplier.name === orderFormData.supplier);
-
-    const order = new Order();
-    order.material = mat;
-    order.supplier = sup;
-    order.quantity = orderFormData.quantity;
-
-    console.log('order', order);
+  addOrder(order: Order) {
+    this.isAddNewPanel = false;
     this.db.addOrder(order);
   }
 

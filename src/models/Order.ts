@@ -5,5 +5,5 @@ export class Order {
   material: Material;
   supplier: Supplier;
   quantity: number;
-  date: string;
+  date: any;
 }

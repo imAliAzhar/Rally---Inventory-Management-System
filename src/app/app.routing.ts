@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialsComponent } from './materials/materials.component';
 import { OrdersComponent } from './orders/orders.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -14,18 +13,14 @@ import { AuthGuard } from './core/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/materials',
     pathMatch: 'full'
   },
   {
     path: '',
     component: LayoutComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
       {
         path: 'materials',
         component: MaterialsComponent

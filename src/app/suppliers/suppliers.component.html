@@ -23,9 +23,7 @@
     [class.panel-hidden]="!isAddNewPanel"
   >
     <span>
-      <span class="error subtitle-1" *ngIf="name.touched && !name.valid"
-        >name required!</span
-      >
+      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name required!</span>
       <input
         type="text"
         autocomplete="off"
@@ -85,18 +83,13 @@
     <label for="supplier-name">Supplier</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input
-        disabled
-        class="supplier-name"
-        [value]="selectedSupplier?.name"
-        type="text"
-      />
+      <input disabled class="supplier-name" [value]="selectedSupplier?.name" type="text" />
     </span>
     <label for="contact-number">Contact Number</label>
     <input
       #updatedNumber
       class="contact-number"
-      type="number"
+      type="text"
       [value]="selectedSupplier?.number"
       (keyup)="numberChanged(selectedSupplier, updatedNumber)"
     />

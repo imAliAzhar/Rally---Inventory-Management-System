@@ -22,15 +22,8 @@
     class="add-new-panel"
     [class.panel-hidden]="!isAddNewPanel"
   >
-    <mat-form-field
-      class="error-span material-name"
-      [floatLabel]="'never'"
-      hideRequiredMarker
-    >
-      <span
-        class="error subtitle-1"
-        *ngIf="material.touched && !material.valid"
-      >
+    <mat-form-field class="error-span material-name" [floatLabel]="'never'" hideRequiredMarker>
+      <span class="error subtitle-1" *ngIf="material.touched && !material.valid">
         material required!
       </span>
       <input
@@ -61,24 +54,14 @@
           material not found
         </mat-option>
 
-        <mat-option
-          *ngFor="let material of filteredMaterials"
-          [value]="material"
-        >
+        <mat-option *ngFor="let material of filteredMaterials" [value]="material">
           {{ material.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field
-      class="error-span supplier-name"
-      [floatLabel]="'never'"
-      hideRequiredMarker
-    >
-      <span
-        class="error subtitle-1"
-        *ngIf="supplier.touched && !supplier.valid"
-      >
+    <mat-form-field class="error-span supplier-name" [floatLabel]="'never'" hideRequiredMarker>
+      <span class="error subtitle-1" *ngIf="supplier.touched && !supplier.valid">
         supplier required!
       </span>
       <input
@@ -109,19 +92,13 @@
           supplier not found
         </mat-option>
 
-        <mat-option
-          *ngFor="let supplier of filteredSuppliers"
-          [value]="supplier"
-        >
+        <mat-option *ngFor="let supplier of filteredSuppliers" [value]="supplier">
           {{ supplier.name }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
     <span>
-      <span
-        class="error subtitle-1"
-        *ngIf="quantity.touched && !quantity.valid"
-      >
+      <span class="error subtitle-1" *ngIf="quantity.touched && !quantity.valid">
         quantity required!
       </span>
       <input
@@ -144,9 +121,7 @@
     <app-order-loader *ngIf="loadingData"></app-order-loader>
     <span *ngFor="let order of (orders$ | async); index as i">
       <div class="list-item" (click)="updateSelectedOrder(order, i)">
-        <div class="quantity body-1">
-          {{ order.quantity }} <span class="unit"></span>
-        </div>
+        <div class="quantity body-1">{{ order.quantity }} <span class="unit"></span></div>
         <i class="edit-icon material-icons">edit</i>
         <div class="list-content subtitle-1">
           <div class="list-title">
@@ -172,42 +147,22 @@
     <label for="material-name">Order</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input
-        disabled
-        class="material-name"
-        [value]="selectedOrder?.material.name"
-        type="text"
-      />
+      <input disabled class="material-name" [value]="selectedOrder?.material.name" type="text" />
     </span>
     <label for="quantity">Quantity</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input
-        disabled
-        class="quantity"
-        [value]="selectedOrder?.quantity"
-        type="text"
-      />
+      <input disabled class="quantity" [value]="selectedOrder?.quantity" type="text" />
     </span>
     <label for="supplier-name">Supplier</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input
-        disabled
-        class="supplier-name"
-        [value]="selectedOrder?.supplier.name"
-        type="text"
-      />
+      <input disabled class="supplier-name" [value]="selectedOrder?.supplier.name" type="text" />
     </span>
     <label for="date">Date</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input
-        disabled
-        class="date"
-        [value]="formatDate(selectedOrder?.date)"
-        type="text"
-      />
+      <input disabled class="date" [value]="formatDate(selectedOrder?.date)" type="text" />
     </span>
   </form>
 </div>
