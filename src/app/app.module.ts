@@ -15,7 +15,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatAutocompleteModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSliderModule
 } from '@angular/material';
 
 import { environment } from 'src/environments/environment';
@@ -60,6 +61,7 @@ import { OrderLoaderComponent } from './shared/order-loader/order-loader.compone
     MatInputModule,
     MatAutocompleteModule,
     MatProgressBarModule,
+    MatSliderModule,
     FormsModule,
     CoreModule
   ],

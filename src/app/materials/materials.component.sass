@@ -38,34 +38,41 @@
         color: #ffffff
         outline: none
 
-    input[type="range"]
-        -webkit-appearance: none
-        width: 100%
-        height: 5px
-        background: #ffffff33
-        border: none
-        outline: none
-        opacity: 0.8
-        -webkit-transition: .3s
-        transition: opacity .3s
-        cursor: pointer
-        margin: 0px
+    mat-slider
+        position: relative
+        width: 248px
+        margin-left: 5px
 
-    input[type="range"]:hover
-        opacity: 1
+    ::ng-deep .mat-accent
+        color: #ffffff
+    // input[type="range"]
+    //     -webkit-appearance: none
+    //     width: 100%
+    //     height: 5px
+    //     background: #ffffff33
+    //     border: none
+    //     outline: none
+    //     opacity: 0.8
+    //     -webkit-transition: .3s
+    //     transition: opacity .3s
+    //     cursor: pointer
+    //     margin: 0px
 
-    input[type="range"]::-webkit-slider-thumb 
-        -webkit-appearance: none
-        appearance: none
-        width: 10px
-        height: 5px
-        background: #4CAF50
+    // input[type="range"]:hover
+    //     opacity: 1
 
-    input[type="range"]::-ms-fill-lower 
-        background: dodgerblue
+    // input[type="range"]::-webkit-slider-thumb 
+    //     -webkit-appearance: none
+    //     appearance: none
+    //     width: 10px
+    //     height: 5px
+    //     background: #4CAF50
 
-    input:disabled
-        cursor: not-allowed
+    // input[type="range"]::-ms-fill-lower 
+    //     background: dodgerblue
+
+    // input:disabled
+    //     cursor: not-allowed
 
 
 //==========================================TABLE==============================//
@@ -219,7 +226,7 @@
                     color: #ffffff55
 
         .quantity
-            font-size: 1.3em
+            font-size: 20px !important
             float: right
             position: absolute
             right: 48px

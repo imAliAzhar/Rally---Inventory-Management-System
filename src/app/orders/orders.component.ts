@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
-import { Order } from "src/models/Order";
-import { DatabaseService } from "../database/database.service";
-import { Material } from "src/models/Material";
-import { Supplier } from "src/models/Supplier";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Order } from 'src/models/Order';
+import { DatabaseService } from '../database/database.service';
+import { Material } from 'src/models/Material';
+import { Supplier } from 'src/models/Supplier';
 
 interface OrderFormData {
   material: string;
@@ -11,9 +11,9 @@ interface OrderFormData {
   quantity: number;
 }
 @Component({
-  selector: "app-orders",
-  templateUrl: "./orders.component.html",
-  styleUrls: ["./orders.component.sass"]
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.sass']
 })
 export class OrdersComponent implements OnInit, OnDestroy {
   suppliers: Supplier[];
@@ -55,10 +55,18 @@ export class OrdersComponent implements OnInit, OnDestroy {
       this.materialsLoading = false;
     });
 
-    this.ordersSubscription = this.orders$.subscribe(orders => {
-      this.selectedOrder = orders[this.selectedOrderIndex];
-      this.loadingData = false;
-    });
+    this.ordersSubscription = this.orders$.subscribe(
+      orders => {
+        this.selectedOrder = orders[this.selectedOrderIndex];
+        if (orders.length != 0) {
+          this.loadingData = false;
+        }
+      },
+      error => {
+        console.log('error', error);
+        this.loadingData = true;
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -76,18 +84,15 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   addOrder(orderFormData: OrderFormData) {
-    const mat = this.materials.find(
-      material => material.name === orderFormData.material
-    );
-    const sup = this.suppliers.find(
-      supplier => supplier.name === orderFormData.supplier
-    );
+    const mat = this.materials.find(material => material.name === orderFormData.material);
+    const sup = this.suppliers.find(supplier => supplier.name === orderFormData.supplier);
 
     const order = new Order();
     order.material = mat;
     order.supplier = sup;
     order.quantity = orderFormData.quantity;
 
+    console.log('order', order);
     this.db.addOrder(order);
   }
 
@@ -101,9 +106,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   filter(value: string, array: Array<any>) {
     const filterValue = value.toLowerCase();
-    return array.filter(element =>
-      element.name.toLowerCase().includes(filterValue)
-    );
+    return array.filter(element => element.name.toLowerCase().includes(filterValue));
   }
 
   formatDate(date: string) {
@@ -111,7 +114,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       const d = new Date(date);
       return d.toDateString();
     } else {
-      return "";
+      return '';
     }
   }
 

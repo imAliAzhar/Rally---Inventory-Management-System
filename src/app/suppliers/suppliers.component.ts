@@ -25,10 +25,18 @@ export class SuppliersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.suppliersSubscription = this.suppliers$.subscribe(suppliers => {
-      this.selectedSupplier = suppliers[this.selectedSupplierIndex];
-      this.loadingData = false;
-    });
+    this.suppliersSubscription = this.suppliers$.subscribe(
+      suppliers => {
+        this.selectedSupplier = suppliers[this.selectedSupplierIndex];
+        if (suppliers.length != 0) {
+          this.loadingData = false;
+        }
+      },
+      error => {
+        console.log('error', error);
+        this.loadingData = true;
+      }
+    );
   }
 
   ngOnDestroy() {
