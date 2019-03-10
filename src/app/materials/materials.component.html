@@ -1,6 +1,6 @@
-<div class="materials-table">
+<div class="materials-table" style="font-size: 10px;">
   <div class="title subtitle-1">
-    Materials
+    {{ date }}
   </div>
   <i
     class="plus-icon material-icons"
@@ -10,8 +10,11 @@
   >
     add
   </i>
-  <div class="title-sum headline-3">
-    $12,132.43
+  <div
+    class="title-sum headline-3"
+    style="font-size: 32px; padding-top: 20px; padding-bottom: 16px"
+  >
+    Materials
   </div>
   <form
     #f="ngForm"
@@ -20,7 +23,9 @@
     [class.panel-hidden]="!isAddNewPanel"
   >
     <span>
-      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name required!</span>
+      <span class="error subtitle-1" *ngIf="name.touched && !name.valid"
+        >name required!</span
+      >
       <input
         type="text"
         autocomplete="off"
@@ -34,7 +39,9 @@
       />
     </span>
     <span>
-      <span class="error subtitle-1" *ngIf="unit.touched && !unit.valid">unit required!</span>
+      <span class="error subtitle-1" *ngIf="unit.touched && !unit.valid"
+        >unit required!</span
+      >
       <input
         type="text"
         autocomplete="off"
@@ -55,7 +62,9 @@
     <app-table-loader *ngIf="loadingData"></app-table-loader>
     <span *ngFor="let material of (materials$ | async); index as i">
       <div class="list-item" (click)="updateSelectedMaterial(material, i)">
-        <div class="quantity body-1">{{ material.quantity }} <span class="unit"></span></div>
+        <div class="quantity body-1">
+          {{ material.quantity }} <span class="unit"></span>
+        </div>
         <i class="edit-icon material-icons">edit</i>
         <div class="list-content subtitle-1">
           <div class="list-title">
@@ -66,9 +75,18 @@
             <span class="title-date"> p.{{ material.processed }} </span>
           </div>
           <svg class="completion-bar">
-            <path [attr.d]="renderQuantityBar(material)" class="completeion-bar-empty" />
-            <path [attr.d]="renderProcessedBar(material)" class="completeion-bar-processed" />
-            <path [attr.d]="renderDeliveredBar(material)" class="completeion-bar-delivered" />
+            <path
+              [attr.d]="renderQuantityBar(material)"
+              class="completeion-bar-empty"
+            />
+            <path
+              [attr.d]="renderProcessedBar(material)"
+              class="completeion-bar-processed"
+            />
+            <path
+              [attr.d]="renderDeliveredBar(material)"
+              class="completeion-bar-delivered"
+            />
           </svg>
         </div>
         <hr />
@@ -85,14 +103,24 @@
     <label for="material-name">Material</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input disabled class="material-name" [value]="selectedMaterial?.name" type="text" />
+      <input
+        disabled
+        class="material-name"
+        [value]="selectedMaterial?.name"
+        type="text"
+      />
     </span>
     <label for="material-unit">Unit</label>
     <input type="text" class="material-unit" [value]="selectedMaterial?.unit" />
     <label for="material-quantity">Total Quantity</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input disabled class="material-quantity" type="text" [value]="selectedMaterial?.quantity" />
+      <input
+        disabled
+        class="material-quantity"
+        type="text"
+        [value]="selectedMaterial?.quantity"
+      />
     </span>
     <label for="material-processed">Material Processed</label>
     <input

@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { Material } from 'src/models/Material';
-import { DatabaseService } from '../database/database.service';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
+import { Material } from "src/models/Material";
+import { DatabaseService } from "../database/database.service";
 
 @Component({
-  selector: 'app-materials',
-  templateUrl: './materials.component.html',
-  styleUrls: ['./materials.component.sass']
+  selector: "app-materials",
+  templateUrl: "./materials.component.html",
+  styleUrls: ["./materials.component.sass"]
 })
 export class MaterialsComponent implements OnInit, OnDestroy {
   materials$: Observable<Material[]>;
@@ -16,12 +16,14 @@ export class MaterialsComponent implements OnInit, OnDestroy {
   selectedMaterial: Material;
   selectedMaterialIndex: number;
   loadingData: boolean;
+  date: string;
 
   constructor(private db: DatabaseService) {
     this.materials$ = this.db.getMaterials();
     this.selectedMaterialIndex = 0;
     this.barWidth = 700;
     this.loadingData = true;
+    this.date = new Date().toDateString();
   }
 
   ngOnInit() {
@@ -41,15 +43,19 @@ export class MaterialsComponent implements OnInit, OnDestroy {
   }
 
   renderQuantityBar(material: Material) {
-    return 'M 0 0 H ' + this.barWidth.toString();
+    return "M 0 0 H " + this.barWidth.toString();
   }
 
   renderProcessedBar(material: Material) {
-    return 'M 0 0 H ' + (material.processed / material.quantity) * this.barWidth;
+    return (
+      "M 0 0 H " + (material.processed / material.quantity) * this.barWidth
+    );
   }
 
   renderDeliveredBar(material: Material) {
-    return 'M 0 0 H ' + (material.delivered / material.quantity) * this.barWidth;
+    return (
+      "M 0 0 H " + (material.delivered / material.quantity) * this.barWidth
+    );
   }
 
   showAddPanel() {

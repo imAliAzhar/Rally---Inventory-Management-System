@@ -15,11 +15,13 @@ export class SuppliersComponent implements OnInit, OnDestroy {
   selectedSupplier: Supplier;
   selectedSupplierIndex: number;
   loadingData: boolean;
+  date: string;
 
   constructor(private db: DatabaseService) {
     this.suppliers$ = this.db.getSuppliers();
     this.selectedSupplierIndex = 0;
     this.loadingData = true;
+    this.date = new Date().toDateString();
   }
 
   ngOnInit() {

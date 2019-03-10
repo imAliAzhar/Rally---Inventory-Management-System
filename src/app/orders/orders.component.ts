@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { Order } from 'src/models/Order';
-import { DatabaseService } from '../database/database.service';
-import { Material } from 'src/models/Material';
-import { Supplier } from 'src/models/Supplier';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
+import { Order } from "src/models/Order";
+import { DatabaseService } from "../database/database.service";
+import { Material } from "src/models/Material";
+import { Supplier } from "src/models/Supplier";
 
 interface OrderFormData {
   material: string;
@@ -11,9 +11,9 @@ interface OrderFormData {
   quantity: number;
 }
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.sass']
+  selector: "app-orders",
+  templateUrl: "./orders.component.html",
+  styleUrls: ["./orders.component.sass"]
 })
 export class OrdersComponent implements OnInit, OnDestroy {
   suppliers: Supplier[];
@@ -33,11 +33,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
   isAddNewPanel: boolean;
   selectedOrder: Order;
   selectedOrderIndex: number;
+  date: string;
 
   constructor(private db: DatabaseService) {
     this.orders$ = this.db.getOrders();
     this.selectedOrderIndex = 0;
     this.loadingData = true;
+    this.date = new Date().toDateString();
   }
 
   ngOnInit() {
@@ -74,8 +76,12 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   addOrder(orderFormData: OrderFormData) {
-    const mat = this.materials.find(material => material.name === orderFormData.material);
-    const sup = this.suppliers.find(supplier => supplier.name === orderFormData.supplier);
+    const mat = this.materials.find(
+      material => material.name === orderFormData.material
+    );
+    const sup = this.suppliers.find(
+      supplier => supplier.name === orderFormData.supplier
+    );
 
     const order = new Order();
     order.material = mat;
@@ -95,7 +101,9 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   filter(value: string, array: Array<any>) {
     const filterValue = value.toLowerCase();
-    return array.filter(element => element.name.toLowerCase().includes(filterValue));
+    return array.filter(element =>
+      element.name.toLowerCase().includes(filterValue)
+    );
   }
 
   formatDate(date: string) {
@@ -103,7 +111,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
       const d = new Date(date);
       return d.toDateString();
     } else {
-      return '';
+      return "";
     }
   }
 

@@ -1,6 +1,6 @@
-<div class="suppliers-table">
+<div class="suppliers-table" style="font-size: 10px;">
   <div class="title subtitle-1">
-    Suppliers
+    {{ date }}
   </div>
   <i
     class="plus-icon material-icons"
@@ -10,8 +10,11 @@
   >
     add
   </i>
-  <div class="title-sum headline-3">
-    $12,132.43
+  <div
+    class="title-sum headline-3"
+    style="font-size: 32px; padding-top: 20px; padding-bottom: 16px"
+  >
+    Suppliers
   </div>
   <form
     #f="ngForm"
@@ -20,7 +23,9 @@
     [class.panel-hidden]="!isAddNewPanel"
   >
     <span>
-      <span class="error subtitle-1" *ngIf="name.touched && !name.valid">name is required!</span>
+      <span class="error subtitle-1" *ngIf="name.touched && !name.valid"
+        >name required!</span
+      >
       <input
         type="text"
         autocomplete="off"
@@ -35,7 +40,7 @@
     </span>
     <span>
       <span class="error subtitle-1" *ngIf="number.touched && !number.valid">
-        number is required!
+        number required!
       </span>
       <input
         type="text"
@@ -80,7 +85,12 @@
     <label for="supplier-name">Supplier</label>
     <span class="tooltip">
       <span class="tooltip-text body-2">not editable</span>
-      <input disabled class="supplier-name" [value]="selectedSupplier?.name" type="text" />
+      <input
+        disabled
+        class="supplier-name"
+        [value]="selectedSupplier?.name"
+        type="text"
+      />
     </span>
     <label for="contact-number">Contact Number</label>
     <input
