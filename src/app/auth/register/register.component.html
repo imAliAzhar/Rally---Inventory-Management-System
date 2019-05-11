@@ -1,5 +1,5 @@
 <div class="topbar">
-  <img class="logo" src="../../../assets/images/logo.png" />
+  <img class="logo" src="./assets/images/logo.png" />
   <span class="headline-3 title">Register</span>
   <span class="signup">
     <span class="subtitle-2 signup-text">
@@ -13,7 +13,9 @@
 </div>
 <form #f="ngForm" (ngSubmit)="register(f.value)" class="login-area">
   <div class="error-span">
-    <span class="error subtitle-1" *ngIf="email.touched && !email.valid">email required!</span>
+    <span class="error subtitle-1" *ngIf="email.touched && !email.valid"
+      >email required!</span
+    >
     <input
       type="text"
       autocomplete="off"
@@ -41,7 +43,10 @@
     />
   </div>
   <div class="error-span">
-    <span class="error subtitle-1" *ngIf="password2.touched && !password2.valid">
+    <span
+      class="error subtitle-1"
+      *ngIf="password2.touched && !password2.valid"
+    >
       password required!
     </span>
     <input
@@ -56,7 +61,9 @@
     />
   </div>
   <div class="confirmations">
-    <button mat-flat-button class="button" [disabled]="!f.valid">Register</button>
+    <button mat-flat-button class="button" [disabled]="!f.valid">
+      Register
+    </button>
     <div class="message subtitle-1">{{ message }}</div>
   </div>
 </form>

@@ -1,5 +1,5 @@
 <div class="topbar">
-  <img class="logo" src="../../../assets/images/logo.png" />
+  <img class="logo" src="./assets/images/logo.png" />
   <span class="headline-3 title">Login</span>
   <span class="signup">
     <span class="subtitle-2 signup-text">
@@ -13,7 +13,9 @@
 </div>
 <form #f="ngForm" (ngSubmit)="login(f.value)" class="login-area">
   <div class="error-span">
-    <span class="error subtitle-1" *ngIf="email.touched && !email.valid">email required!</span>
+    <span class="error subtitle-1" *ngIf="email.touched && !email.valid"
+      >email required!</span
+    >
     <input
       type="text"
       autocomplete="off"

@@ -8,7 +8,12 @@ let win;
 
 function createWindow() {
   const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
-  win = new BrowserWindow({ width: width, height: height, frame: false });
+  win = new BrowserWindow({
+    width: width,
+    height: height,
+    frame: false,
+    resizable: false
+  });
   // win.maximize();
   win.isResizable(false);
   win.setMenuBarVisibility(false);
